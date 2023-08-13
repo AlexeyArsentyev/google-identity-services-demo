@@ -24,11 +24,9 @@ function App() {
 
   return (
     <div className="App">
-      <GoogleOAuthProvider clientId="217838202385-uad8jqp1b8b35crn0k2du5dhbkpp9hs7.apps.googleusercontent.com">
-        <button onClick={login} className="googleBtn">
-          <img src="googleLogo.png" alt="" />
-        </button>
-      </GoogleOAuthProvider>
+      <button onClick={login} className="googleBtn">
+        <img src="googleLogo.png" alt="google logo" />
+      </button>
     </div>
   );
 }
