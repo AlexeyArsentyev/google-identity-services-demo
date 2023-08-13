@@ -37,19 +37,27 @@
   }
 }
 
-button{
+button {
   background-color: black;
-  padding:20px;
-  border-radius: .5rem;
-  color:white;
-  border:none;
+  padding: 20px;
+  border-radius: 0.5rem;
+  color: white;
+  border: none;
   margin-bottom: 50px;
 }
 
-button:hover{
-  border:2px solid white;
+button:hover {
+  border: 2px solid white;
 }
 
-button i{
+button i {
   margin-right: 10px;
+}
+
+body {
+  background-image: url("../public/paper.png");
+}
+
+.googleBtn {
+  background-color: rgba(255, 255, 255, 0);
 }
