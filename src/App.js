@@ -1,24 +1,30 @@
 import "./App.css";
-import { GoogleLogin } from "@react-oauth/google";
-import jwt_decode from "jwt-decode";
 import { useGoogleLogin } from "@react-oauth/google";
-import axios from "axios";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   const login = useGoogleLogin({
-    onSuccess: async (respose) => {
-      try {
-        const res = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
-          headers: {
-            Authorization: `Bearer ${respose.access_token}`,
-          },
-        });
+    onSuccess: async (response) => {
+      const accessToken = response.access_token;
 
-        console.log(res.data, respose.access_token);
-      } catch (err) {
-        console.log(err);
-      }
+      console.log(accessToken);
+
+      const apiUrl = "http://localhost:8080/api/v1/users/googleAuth";
+      const headers = new Headers();
+      headers.append("Authorization", `Bearer ${accessToken}`);
+
+      const requestOptions = {
+        method: "POST",
+        headers: headers,
+      };
+
+      fetch(apiUrl, requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Response:", data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
     },
   });
 
